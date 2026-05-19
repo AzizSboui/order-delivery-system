@@ -1,0 +1,348 @@
+{
+  "info": {
+    "name": "Gestion Commandes & Livraisons",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:9090/api" },
+    { "key": "clientId", "value": "1" },
+    { "key": "produitId", "value": "1" },
+    { "key": "commandeId", "value": "1" }
+  ],
+  "item": [
+    {
+      "name": "Clients",
+      "item": [
+        {
+          "name": "Lister tous les clients",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/clients",
+            "description": "Retourne la liste de tous les clients"
+          }
+        },
+        {
+          "name": "Obtenir un client par ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/clients/{{clientId}}",
+            "description": "Retourne un client par son ID"
+          }
+        },
+        {
+          "name": "Obtenir un client par email",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/clients/email/jean.dupont@email.com",
+            "description": "Recherche un client par son adresse email"
+          }
+        },
+        {
+          "name": "Créer un client",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/clients",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Jean Dupont\",\n  \"email\": \"jean.dupont@email.com\",\n  \"adresse\": \"12 rue de la Paix, 75001 Paris\"\n}"
+            },
+            "description": "Crée un nouveau client"
+          }
+        },
+        {
+          "name": "Modifier un client",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/clients/{{clientId}}",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Jean Dupont\",\n  \"email\": \"jean.dupont@email.com\",\n  \"adresse\": \"25 avenue Victor Hugo, 69002 Lyon\"\n}"
+            },
+            "description": "Met à jour les informations d'un client"
+          }
+        },
+        {
+          "name": "Supprimer un client",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/clients/{{clientId}}",
+            "description": "Supprime un client par son ID"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Produits",
+      "item": [
+        {
+          "name": "Lister tous les produits",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/produits",
+            "description": "Retourne la liste de tous les produits"
+          }
+        },
+        {
+          "name": "Obtenir un produit par ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/produits/{{produitId}}",
+            "description": "Retourne un produit par son ID"
+          }
+        },
+        {
+          "name": "Rechercher des produits par nom",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/produits/search?nom=laptop",
+              "query": [{ "key": "nom", "value": "laptop" }]
+            },
+            "description": "Recherche des produits dont le nom contient le terme donné"
+          }
+        },
+        {
+          "name": "Lister les produits disponibles (stock > 0)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/produits/disponibles",
+            "description": "Retourne les produits avec un stock supérieur à 0"
+          }
+        },
+        {
+          "name": "Créer un produit",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/produits",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Laptop Pro 15\",\n  \"prix\": 1299.99,\n  \"stock\": 50\n}"
+            },
+            "description": "Crée un nouveau produit"
+          }
+        },
+        {
+          "name": "Modifier un produit",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/produits/{{produitId}}",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Laptop Pro 15 - Edition 2025\",\n  \"prix\": 1199.99,\n  \"stock\": 35\n}"
+            },
+            "description": "Met à jour un produit existant"
+          }
+        },
+        {
+          "name": "Supprimer un produit",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/produits/{{produitId}}",
+            "description": "Supprime un produit par son ID"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Commandes",
+      "item": [
+        {
+          "name": "Lister toutes les commandes",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/commandes",
+            "description": "Retourne la liste de toutes les commandes"
+          }
+        },
+        {
+          "name": "Obtenir une commande par ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/commandes/{{commandeId}}",
+            "description": "Retourne une commande avec ses lignes"
+          }
+        },
+        {
+          "name": "Commandes d'un client",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/commandes/client/{{clientId}}",
+            "description": "Retourne toutes les commandes d'un client donné"
+          }
+        },
+        {
+          "name": "Commandes par statut - EN_ATTENTE",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/commandes/statut/EN_ATTENTE",
+            "description": "Filtre les commandes par statut. Valeurs : EN_ATTENTE, CONFIRMEE, EN_COURS, EXPEDIEE, LIVREE, ANNULEE"
+          }
+        },
+        {
+          "name": "Créer une commande",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/commandes",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clientId\": 1,\n  \"lignes\": [\n    {\n      \"produitId\": 1,\n      \"quantite\": 2,\n      \"prixUnitaire\": 1299.99\n    },\n    {\n      \"produitId\": 2,\n      \"quantite\": 1,\n      \"prixUnitaire\": 49.90\n    }\n  ]\n}"
+            },
+            "description": "Crée une commande avec ses lignes. Le stock est décrémenté automatiquement."
+          }
+        },
+        {
+          "name": "Changer le statut d'une commande",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/commandes/{{commandeId}}/statut?statut=CONFIRMEE",
+              "query": [{ "key": "statut", "value": "CONFIRMEE" }]
+            },
+            "description": "Met à jour le statut. Valeurs : EN_ATTENTE, CONFIRMEE, EN_COURS, EXPEDIEE, LIVREE, ANNULEE"
+          }
+        },
+        {
+          "name": "Supprimer une commande",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/commandes/{{commandeId}}",
+            "description": "Supprime une commande par son ID"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Transporteurs",
+      "item": [
+        {
+          "name": "Lister tous les transporteurs",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/transporteurs"
+          }
+        },
+        {
+          "name": "Créer un transporteur",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/transporteurs",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Chronopost\",\n  \"telephone\": \"+33 1 23 45 67 89\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Modifier un transporteur",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/transporteurs/1",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Chronopost Express\",\n  \"telephone\": \"+33 1 23 45 67 89\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Supprimer un transporteur",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/transporteurs/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Livraisons",
+      "item": [
+        {
+          "name": "Lister toutes les livraisons",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/livraisons"
+          }
+        },
+        {
+          "name": "Livraison d'une commande",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/livraisons/commande/{{commandeId}}"
+          }
+        },
+        {
+          "name": "Créer une livraison",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/livraisons",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"commandeId\": 1,\n  \"transporteurId\": 1,\n  \"dateLivraison\": \"2025-05-01\",\n  \"cout\": 9.90\n}"
+            }
+          }
+        },
+        {
+          "name": "Changer le statut d'une livraison",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/livraisons/1/statut?statut=EN_TRANSIT",
+              "query": [{ "key": "statut", "value": "EN_TRANSIT" }]
+            },
+            "description": "Valeurs : EN_PREPARATION, EXPEDIEE, EN_TRANSIT, LIVREE, ECHEC"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Paiements",
+      "item": [
+        {
+          "name": "Lister tous les paiements",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/paiements"
+          }
+        },
+        {
+          "name": "Paiement d'une commande",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/paiements/commande/{{commandeId}}"
+          }
+        },
+        {
+          "name": "Créer un paiement",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/paiements",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"commandeId\": 1,\n  \"mode\": \"CARTE_BANCAIRE\"\n}"
+            },
+            "description": "Modes : CARTE_BANCAIRE, VIREMENT, PAYPAL, ESPECES, CHEQUE"
+          }
+        },
+        {
+          "name": "Valider un paiement",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/paiements/1/statut?statut=VALIDE",
+              "query": [{ "key": "statut", "value": "VALIDE" }]
+            },
+            "description": "Valeurs : EN_ATTENTE, VALIDE, REFUSE, REMBOURSE. Valider un paiement passe la commande en CONFIRMEE automatiquement."
+          }
+        }
+      ]
+    }
+  ]
+}

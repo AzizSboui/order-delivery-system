@@ -1,0 +1,126 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; background: #f5f5f5; color: #333; }
+
+nav {
+  background: #2c3e50;
+  padding: 12px 24px;
+  display: flex;
+  gap: 20px;
+}
+nav a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 14px;
+}
+nav a.active, nav a:hover { color: #fff; }
+
+.container {
+  max-width: 1000px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+h2 { margin-bottom: 16px; }
+h3 { margin: 20px 0 10px; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+th, td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+th { background: #f0f0f0; font-weight: 600; }
+tr:hover { background: #fafafa; }
+
+.btn {
+  background: #2c3e50;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn:hover { background: #1a252f; }
+
+button {
+  background: #eee;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  margin-right: 4px;
+}
+button:hover { background: #ddd; }
+
+.form-group {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.form-group label { font-size: 13px; font-weight: 600; }
+
+.inline-form {
+  background: #fff;
+  padding: 16px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+input, select {
+  padding: 7px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 13px;
+}
+input:focus, select:focus { outline: none; border-color: #2c3e50; }
+
+.item-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.actions { margin-top: 16px; display: flex; gap: 8px; }
+
+.badge {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  background: #ddd;
+}
+.badge-EN_ATTENTE { background: #ffeaa7; color: #856404; }
+.badge-CONFIRMEE { background: #d4edda; color: #155724; }
+.badge-EN_COURS { background: #cce5ff; color: #004085; }
+.badge-EXPEDIEE { background: #d1ecf1; color: #0c5460; }
+.badge-LIVREE { background: #c3e6cb; color: #155724; }
+.badge-ANNULEE { background: #f8d7da; color: #721c24; }
+
+.low-stock { color: #e74c3c; font-weight: bold; }
+
+a { color: #2c3e50; }
+a:hover { text-decoration: underline; }
