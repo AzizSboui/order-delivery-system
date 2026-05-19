@@ -4,6 +4,7 @@ import { OrderFormComponent } from './components/orders/order-form.component';
 import { OrderDetailComponent } from './components/orders/order-detail.component';
 import { DeliveryListComponent } from './components/deliveries/delivery-list.component';
 import { ClientListComponent } from './components/clients/client-list.component';
+import { ClientHistoriqueComponent } from './components/clients/client-historique.component';
 import { ProduitListComponent } from './components/produits/produit-list.component';
 import { TransporteurListComponent } from './components/transporteurs/transporteur-list.component';
 
@@ -14,6 +15,7 @@ export const routes: Routes = [
   { path: 'commandes/:id', component: OrderDetailComponent },
   { path: 'livraisons', component: DeliveryListComponent },
   { path: 'clients', component: ClientListComponent },
+  { path: 'historique', component: ClientHistoriqueComponent },
   { path: 'produits', component: ProduitListComponent },
   { path: 'transporteurs', component: TransporteurListComponent },
 ];
